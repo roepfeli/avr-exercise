@@ -17,7 +17,7 @@ ISR(TIMER0_OVF_vect)
 {
     if (++ovf_count == 50)
     {
-        PORTB ^= 0xff;
+        _toggle_bit(PORTB, PB7);
         ovf_count = 0;
     }
 }
@@ -34,7 +34,7 @@ int main()
     //     _delay_ms(1000);
     // }
 
-    DDRB = 0xff;
+    _set_bit(DDRB, DDB7);
 
     setup_timer();
 
