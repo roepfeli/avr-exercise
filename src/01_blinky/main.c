@@ -2,7 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#include "../common/include/bit_operations.h"
+#include "../common_c/include/bit_operations.h"
 
 static void setup_timer()
 {

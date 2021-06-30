@@ -4,10 +4,12 @@ MMCU = atmega2560
 CPU_FREQ = 16000000
 INCLUDE = -I./include/
 
-OBJECTS = $(wildcard ./*.c)
+SOURCES := $(wildcard ./*.c)
+OBJECTS := $(patsubst ./%.c, ./%.o, $(SOURCES))
 
 build: $(OBJECTS)
-	$(CC) $(INCLUDE) -DF_CPU=$(CPU_FREQ) -mmcu=$(MMCU) -c $< $(CFLAGS) -o $(subst .c,.o, $<)
+	# $(CC) $(CFLAGS) $(INCLUDE) -DF_CPU=$(CPU_FREQ) -mmcu=$(MMCU) -c $< -o $(subst .c,.o, $<)
+	# avr-gcc -I./include/ -DF_CPU=16000000 -mmcu=atmega2560 -c $< $(CFLAGS) -o $(subst .c,.o, $<)
 
 .PHONY: clean build
 
